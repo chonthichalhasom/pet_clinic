@@ -1,0 +1,194 @@
+/* assets/style.css */
+/* Fonts set in header.php (Noto Sans Thai, Prompt) */
+
+:root{
+  --mint:#89e3d8;
+  --sky:#a9e3ff;
+  --soft:#fff6e6;
+  --accent:#ffd1dc;
+  --muted:#6b6b6b;
+  --card-shadow: 0 6px 20px rgba(36, 82, 100, 0.08);
+}
+
+* { box-sizing: border-box; margin:0; padding:0; font-family: "Noto Sans Thai", "Prompt", sans-serif; }
+
+body {
+  background: linear-gradient(180deg, #f7fcff 0%, #fbfbfb 100%);
+  color: #123;
+  min-height: 100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* NAVBAR */
+.site-header { background: linear-gradient(90deg, var(--sky), var(--mint)); box-shadow: 0 3px 12px rgba(0,0,0,0.06); }
+.navbar { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:12px 20px; }
+.brand { display:flex; align-items:center; color:#fff; text-decoration:none; }
+.brand-emoji { font-size:26px; margin-right:10px; }
+.brand-text { font-weight:600; font-size:18px; }
+
+.nav-right a { color:#fff; text-decoration:none; margin-left:14px; padding:6px 10px; border-radius:8px; font-weight:500; }
+.nav-right a:hover { background: rgba(255,255,255,0.12); }
+
+/* container */
+.container { width:95%; max-width:1200px; margin:20px auto 40px; }
+
+/* cards / forms */
+.card { background:#fff; border-radius:14px; padding:18px; box-shadow: var(--card-shadow); margin-bottom:18px; }
+.header-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+
+/* headings */
+h1,h2,h3 { color:#0b6b6b; margin-bottom:8px; font-weight:600; }
+
+/* tables */
+.table { width:100%; border-collapse:collapse; background:#fff; border-radius:10px; overflow:hidden; box-shadow:var(--card-shadow); }
+.table th, .table td { padding:12px 10px; text-align:left; border-bottom:1px solid #f1f1f1; }
+.table th { background: linear-gradient(90deg,#f0f9ff,#f7fffb); color:#123; font-weight:600; }
+.table tr:hover { background:#fcfffe; }
+
+/* buttons */
+.btn { display:inline-block; padding:8px 14px; border-radius:10px; border:none; cursor:pointer; font-weight:600; text-decoration:none; color:#fff; }
+.btn-primary { background: linear-gradient(90deg, #5ad5c9, #1fb5a7); box-shadow: 0 6px 14px rgba(31,181,167,0.12); }
+.btn-warning { background: linear-gradient(90deg,#ffd18d,#ffb86b); color:#142; }
+.btn-danger { background: linear-gradient(90deg,#ff8b94,#ff5c6a); }
+
+/* form inputs */
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="date"], textarea, select {
+  width:100%; padding:10px 12px; border-radius:10px; border:1px solid #e7e7e7; background:#fff; margin-top:6px;
+}
+
+/* login card */
+.login-card { max-width:420px; margin:60px auto; padding:22px; border-radius:16px; box-shadow:var(--card-shadow); background:linear-gradient(180deg,#fff,#fbffff); }
+
+/* footer */
+.site-footer { margin-top:auto; padding:18px 0; background:linear-gradient(90deg,#f6fffb,#fff6f9); border-top:1px solid #f2f2f2; text-align:center; }
+.site-footer small{ color:#6b6b6b; }
+
+/* responsive */
+@media (max-width:768px) {
+  .nav-right a { margin-left:8px; font-size:14px; padding:6px 8px; }
+  .navbar { padding:10px; }
+  .container { width:95%; }
+}
+
+/* login page style */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px);
+  background: linear-gradient(135deg, #f9f9ff, #f1faff);
+}
+
+.login-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+  width: 380px;
+  text-align: center;
+  font-family: 'Prompt', sans-serif;
+}
+
+.login-title {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.login-subtitle {
+  font-size: 14px;
+  color: #718096;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.login-form input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.login-form input:focus {
+  border-color: #63b3ed;
+  outline: none;
+}
+
+.btn-primary {
+  background: #63b3ed;
+  border: none;
+  padding: 12px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #4299e1;
+}
+
+.login-register {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.login-register a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* ฟอร์มจองคิว */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form input, .form select {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.form button {
+  padding: 12px;
+  border-radius: 10px;
+  background: #63b3ed;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background: #4299e1;
+}
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#f9fdfb; color:#333; }
+.navbar { background:#63b3ed; padding:15px; display:flex; justify-content:space-between; color:white; }
+.navbar a { color:white; text-decoration:none; margin-left:10px; }
+.navbar a:hover { text-decoration:underline; }
+
+.container { width:90%; margin:20px auto; background:white; padding:20px; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.1); }
+h2 { color:#4299e1; margin-bottom:15px; }
+.btn { padding:8px 15px; border:none; border-radius:5px; cursor:pointer; text-decoration:none; margin:3px; display:inline-block; }
+.btn-primary { background:#4299e1; color:white; }
+.btn-primary:hover { background:#3182ce; }
+.btn-secondary { background:#90cdf4; color:white; }
+.btn-secondary:hover { background:#63b3ed; }
+.btn-danger { background:#f56565; color:white; }
+.btn-danger:hover { background:#c53030; }
+.dashboard-buttons { display:flex; flex-wrap:wrap; gap:15px; margin-top:20px; }
+.dashboard-buttons .btn { flex:1 1 200px; text-align:center; padding:15px; font-size:16px; }
+.form label { display:block; margin-top:10px; font-weight:bold; }
+.form input, .form select, .form textarea { width:100%; padding:8px; margin-top:5px; border:1px solid #ccc; border-radius:5px; }
+.receipt-card { padding:15px; border:1px solid #ddd; border-radius:10px; background:#f0f8ff; }
