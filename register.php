@@ -3,8 +3,12 @@
 include "app/config.php";
 include "app/helpers.php";
 
+// เรียก session อย่างปลอดภัย
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $error = '';
-$success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
@@ -22,19 +26,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->fetch()) {
             $error = 'มีชื่อผู้ใช้นี้แล้ว';
         } else {
-            // บันทึก user ใหม่
+            // บันทึกผู้ใช้ใหม่
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $pdo->prepare("INSERT INTO users (username, password, email, phone) VALUES (?, ?, ?, ?)");
             $stmt->execute([$username, $hashed_password, $email, $phone]);
 
-            echo "<script>
+            // เก็บ session ของผู้ใช้
+            $_SESSION['user_id'] = $pdo->lastInsertId();
+            $_SESSION['username'] = $username;
+
+            // แจ้งเตือนและไปหน้า index.php
+            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+            <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     Swal.fire({
                         title: 'สมัครสมาชิกสำเร็จ!',
-                        text: 'คุณสามารถเข้าสู่ระบบได้แล้ว',
+                        text: 'ขอต้อนรับ, $username',
                         icon: 'success',
-                        confirmButtonText: 'ไปยังหน้าล็อคอิน'
-                    }).then(() => window.location='login.php');
+                        confirmButtonText: 'ตกลง'
+                    }).then(() => window.location='index.php');
                 });
             </script>";
             exit;
@@ -51,6 +61,7 @@ include "templates/header.php";
     <p class="login-subtitle">สร้างบัญชีสำหรับระบบคลินิกสัตว์เลี้ยง</p>
 
     <?php if ($error): ?>
+      <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
       <script>
         document.addEventListener('DOMContentLoaded', ()=> {
           Swal.fire('สมัครสมาชิกล้มเหลว', <?= json_encode($error) ?>, 'error');

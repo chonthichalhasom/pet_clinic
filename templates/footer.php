@@ -10,7 +10,7 @@ if (session_status() !== PHP_SESSION_NONE && !empty($_SESSION['flash'])) {
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <small>© <?= date('Y') ?> Pet & Kid Clinic</small>
+    <small>© <?= date('Y') ?> Pet Clinic</small>
   </div>
 </footer>
 
