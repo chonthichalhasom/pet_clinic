@@ -1,6 +1,3 @@
-/* assets/style.css */
-/* Fonts set in header.php (Noto Sans Thai, Prompt) */
-
 :root {
   --mint: #89e3d8;
   --sky: #a9e3ff;
@@ -55,7 +52,7 @@ body {
 /* Container */
 .container { width:95%; max-width:1200px; margin:20px auto 40px; }
 
-/* Cards / Forms */
+/* Cards */
 .card { 
   background:#fff; 
   border-radius:14px; 
@@ -81,38 +78,35 @@ h1,h2,h3,h4 { color:#0b6b6b; margin-bottom:10px; font-weight:600; }
 .table th { background: linear-gradient(90deg,#f0f9ff,#f7fffb); color:#123; font-weight:600; }
 .table tr:hover { background:#fcfffe; }
 
-/* Buttons */
+/* Buttons base */
 .btn { 
-  display:inline-block; 
-  padding:10px 16px; 
-  border-radius:10px; 
+  display:inline-flex; 
+  justify-content:center; 
+  align-items:center; 
+  padding:8px 16px; 
+  min-width:110px;
+  font-size:14px; 
+  border-radius:8px; 
   border:none; 
   cursor:pointer; 
   font-weight:600; 
   text-decoration:none; 
-  color:#fff; 
+  white-space: nowrap;
   transition:0.3s; 
 }
-.btn-primary { 
-  background: linear-gradient(90deg, #5ad5c9, #1fb5a7); 
-  box-shadow: 0 6px 14px rgba(31,181,167,0.12); 
-}
-.btn-success { 
-  background: linear-gradient(90deg,#38c172,#1f9d55); 
-}
-.btn-success:hover { 
-  background: linear-gradient(90deg,#2f9f5d,#187643); 
-}
-.btn-warning { 
-  background: linear-gradient(90deg,#ffd18d,#ffb86b); 
-  color:#142; 
-}
-.btn-danger { 
-  background: linear-gradient(90deg,#ff8b94,#ff5c6a); 
-}
-.btn-danger:hover { 
-  background: linear-gradient(90deg,#e56b78,#d04155); 
-}
+
+/* Buttons colors */
+.btn-primary { background-color: #45c9a2; border-color: #45c9a2; color: #fff; }
+.btn-success { background-color: #28a745; border-color: #28a745; color: #fff; }
+.btn-danger  { background-color: #dc3545; border-color: #dc3545; color: #fff; }
+.btn-warning { background-color: #ffc107; border-color: #ffc107; color: #212529; }
+.btn-secondary { background-color: #6c757d; border-color: #6c757d; color: #fff; }
+
+/* Buttons hover */
+.btn-primary:hover { background-color: #38b590; }
+.btn-success:hover { background-color: #1f9d55; }
+.btn-danger:hover  { background-color: #c53030; }
+.btn-warning:hover { background-color: #e6a41c; }
 
 /* Form Inputs */
 input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="date"], textarea, select, input[type="time"] {
@@ -132,279 +126,81 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
   border-radius:16px; 
   box-shadow:var(--card-shadow); 
   background:linear-gradient(180deg,#fff,#fbffff); 
+  text-align: center;
 }
-.login-title { font-size: 24px; margin-bottom: 8px; color: #2c3e50; }
-.login-subtitle { font-size: 14px; color: #718096; margin-bottom: 20px; }
+.login-title { font-size: 24px; margin-bottom: 8px; color: #2c3e50; text-align:center; }
+.login-subtitle { font-size: 14px; color: #718096; margin-bottom: 20px; text-align:center; }
 .login-form { display: flex; flex-direction: column; gap: 12px; text-align: left; }
 .login-form input { padding: 10px; border-radius: 10px; border: 1px solid #ddd; font-size: 14px; }
 .login-form input:focus { border-color: #63b3ed; outline: none; }
-.login-register { margin-top: 15px; font-size: 14px; color: #555; }
+.login-register { margin-top: 15px; font-size: 14px; color: #555; text-align:center; }
 .login-register a { color: #3498db; text-decoration: none; font-weight: bold; }
 
-/* Forms */
-.form { display:flex; flex-direction:column; gap:12px; }
-.form label { font-weight:bold; margin-top:10px; display:block; }
-.form input, .form select, .form textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius:8px; margin-top:6px; }
-.form button { padding:12px; border-radius:10px; background:#63b3ed; color:#fff; border:none; font-weight:bold; cursor:pointer; }
-.form button:hover { background:#4299e1; }
-
-/* Payment QR Page */
-.payment-card {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    border-radius: 12px;
-    background-color: #fff;
-    transition: all 0.3s ease;
-}
-.payment-card img {
-    max-width: 250px;
-    width: 100%;
-    height: auto;
-    margin-bottom: 25px;
-    border-radius: 8px;
-}
-.payment-card .btn {
-    width: 160px;
-    font-size: 1rem;
-    padding: 12px 0;
-    margin: 8px;
-    transition: background 0.3s;
-}
-.payment-card .btn-success {
-    background: linear-gradient(90deg, #38c172, #1f9d55);
-    border: none;
-    color: #fff;
-}
-.payment-card .btn-success:hover {
-    background: linear-gradient(90deg, #2f9f5d, #187643);
-}
-.payment-card .btn-danger {
-    background: linear-gradient(90deg, #f56565, #e53e3e);
-    border: none;
-    color: #fff;
-}
-.payment-card .btn-danger:hover {
-    background: linear-gradient(90deg, #e53e3e, #c53030);
+/* Search Form + Buttons */
+form.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end; /* ชิดขวา */
+  margin-bottom: 1rem;
 }
 
-/* Card Center Full Page */
-.d-flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    padding: 10px;
+form.d-flex input[type="text"] {
+  flex: 1 1 250px; 
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
 }
 
-/* Table Override */
-.table td, .table th { font-size:14px; }
+.btn-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ฟิกขนาดปุ่ม */
+.btn-fixed {
+  font-size: 14px;       
+  padding: 8px 16px;     
+  min-width: 110px;      
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  white-space: nowrap;
+}
 
 /* Footer */
 .site-footer { 
-    margin-top:auto; 
-    padding:18px 0; 
-    background:linear-gradient(90deg,#f6fffb,#fff6f9); 
-    border-top:1px solid #f2f2f2; 
-    text-align:center; 
+  margin-top:auto; 
+  padding:18px 0; 
+  background:linear-gradient(90deg,#a9e3ff,#89e3d8,#ffd1dc); 
+  border-top:1px solid #f2f2f2; 
+  text-align:center; 
+  display: flex;           
+  justify-content: center; 
+  align-items: center;
 }
-.site-footer small{ color:#6b6b6b; }
+.site-footer small { 
+  color:#ffffff; 
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+}
 
 /* Responsive */
 @media (max-width:768px){
-  .nav-right a { margin-left:8px; font-size:14px; padding:6px 8px; }
-  .navbar { padding:10px; }
-  .container { width:95%; }
+  form.d-flex { justify-content: flex-start; }
+  .btn-group { width: 100%; justify-content: flex-start; }
+  form.d-flex input[type="text"] { flex: 1 1 100%; margin-bottom: 6px; }
+  .btn-fixed { width: 120px; }
 }
 
 @media (max-width:480px){
-    .payment-card { width: 90%; padding: 20px; }
-    .payment-card .btn { width: 100%; margin: 5px 0; }
-    .payment-card img { max-width: 200px; margin-bottom: 20px; }
+  form.d-flex { flex-direction: column; align-items: stretch; }
+  .btn-group { flex-direction: column; width: 100%; }
+  .btn-fixed { width: 100%; }
 }
-/* ใบเสร็จ */
-.receipt-card {
-    max-width: 650px;
-    margin: 30px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: var(--card-shadow);
-}
-
-.receipt-card h2 {
-    font-weight: 600;
-    color: var(--sky);
-    margin-bottom: 20px;
-}
-
-.receipt-card h4 {
-    font-weight: 600;
-    margin-top: 20px;
-    color: #123;
-}
-
-/* ปุ่มใบเสร็จ ใช้สีธีมเดียวกับ btn-primary */
-.btn-receipt {
-    background: linear-gradient(90deg, var(--mint), var(--sky));
-    box-shadow: 0 6px 14px rgba(36,82,100,0.08);
-    border-radius: 10px;
-    padding: 12px 24px;
-    font-weight: 600;
-    text-decoration: none;
-    color: #fff;
-    transition: all 0.3s ease;
-}
-
-.btn-receipt:hover {
-    background: linear-gradient(90deg, var(--sky), var(--mint));
-    box-shadow: 0 4px 18px rgba(36,82,100,0.15);
-    color: #fff;
-}
-/* Footer */
-.site-footer { 
-    margin-top:auto; 
-    padding:18px 0; 
-    background:linear-gradient(90deg,#f6fffb,#fff6f9); 
-    border-top:1px solid #f2f2f2; 
-    text-align:center; 
-    display: flex;           /* เพิ่มบรรทัดนี้ */
-    justify-content: center; /* เพิ่มบรรทัดนี้ */
-}
-.site-footer small { 
-    color:#6b6b6b; 
-    display: block;          /* เพิ่มบรรทัดนี้ */
-}
-/* Login Card */
-.login-card { 
-    max-width: 420px; 
-    margin: 60px auto; 
-    padding: 22px; 
-    border-radius: 16px; 
-    box-shadow: var(--card-shadow); 
-    background: linear-gradient(180deg,#fff,#fbffff); 
-    text-align: center; /* ข้อความหัวอยู่ตรงกลาง */
-}
-
-/* หัวข้อ Login */
-.login-title,
-.login-subtitle {
-    text-align: center; /* ทำให้หัวข้ออยู่ตรงกลาง */
-}
-
-/* Register Link */
-.login-register { 
-    margin-top: 15px; 
-    font-size: 14px; 
-    color: #555; 
-    text-align: center; /* "ยังไม่มีบัญชี? สมัครสมาชิก" อยู่ตรงกลาง */
-}
-/* ทำให้ฟอร์มค้นหาและปุ่มเรียงกันสวยและ responsive */
-form.d-flex {
-    display: flex;
-    flex-wrap: wrap; /* พับเมื่อหน้าจอเล็ก */
-    gap: 10px;       /* ระยะห่างระหว่าง input กับปุ่ม */
-    align-items: center;
-    justify-content: flex-start; /* ปรับเป็น center ถ้าต้องการตรงกลางทั้งหมด */
-    margin-bottom: 1rem;
-}
-
-/* ให้ input search ยืดเต็มที่ */
-form.d-flex input[type="text"] {
-    flex: 1 1 250px; /* ขยายได้เต็มแต่ขั้นต่ำ 250px */
-}
-
-
-/* Fonts */
-body { 
-    font-family: 'Prompt', sans-serif; 
-    background-color: #f5f5f5; 
-}
-
-/* Card */
-.card {
-    background-color: #fff;
-    border-radius: 15px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-/* Card header */
-.card .header-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
-
-/* Table */
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-}
-
-.table th, .table td {
-    vertical-align: middle !important;
-    text-align: center;
-}
-
-.table th { font-weight: 600; }
-
-/* Form inputs */
-.form-control {
-    border-radius: 8px;
-}
-
-/* Form sections */
-.form-section {
-    background-color: #fff;
-    padding: 25px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border-radius: 15px;
-}
-
-/* Headings */
-h2, h4 { font-weight: 600; }
-
-/* Buttons - ขนาดและตำแหน่งเท่ากันทุกหน้า */
-.btn {
-    font-size: 14px;          /* ขนาดตัวอักษรเท่ากัน */
-    padding: 8px 18px;        /* ความสูงและความกว้างของปุ่ม */
-    min-width: 110px;         /* ความกว้างขั้นต่ำเท่ากัน */
-    white-space: nowrap;
-    text-align: center;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-}
-
-/* Button colors */
-.btn-primary { background-color: #45c9a2; border-color: #45c9a2; color: #fff; }
-.btn-success { background-color: #28a745; border-color: #28a745; color: #fff; }
-.btn-warning { background-color: #ffc107; border-color: #ffc107; color: #212529; }
-.btn-danger  { background-color: #dc3545; border-color: #dc3545; color: #fff; }
-.btn-secondary { background-color: #6c757d; border-color: #6c757d; color: #fff; }
-
-/* ปุ่ม Add ดันไปด้านขวาในฟอร์ม */
-form.d-flex a.btn-success {
-    margin-left: auto;
-}
-
-/* Responsive table */
-.table-responsive { overflow-x: auto; }
-
-/* Alerts */
-.alert { border-radius: 10px; }
-
-/* Text center */
-.text-center { text-align: center; }
-.text-muted { color: #6c757d; }

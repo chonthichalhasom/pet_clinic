@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 document.addEventListener('DOMContentLoaded', () => {
                     Swal.fire({
                         title: 'สมัครสมาชิกสำเร็จ!',
-                        text: 'ขอต้อนรับ, $username',
+                        text: 'กรุณารอสักครู่ กำลังพาคุณไปยังหน้าเข้าสู่ระบบ...',
                         icon: 'success',
                         confirmButtonText: 'ตกลง'
                     }).then(() => window.location='index.php');
