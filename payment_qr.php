@@ -35,20 +35,24 @@ if (!$receipt) {
 include "templates/navbar.php";
 ?>
 
-<!-- โหลด SweetAlert2 จาก CDN -->
+<!-- SweetAlert2 -->
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<div class="payment-card text-center">
-    <h2>ชำระเงินผ่าน QR</h2>
-    <p>ยอดรวม: <strong><?= isset($receipt['total_amount']) ? number_format($receipt['total_amount'],2) : '0.00' ?> บาท</strong></p>
-    
-    <img src="assets/payment.jpeg" alt="QR Payment">
+<!-- Container สำหรับจัดการ card อยู่ตรงกลาง -->
+<div class="container d-flex justify-content-center align-items-center" style="min-height:70vh;">
+    <div class="payment-card text-center">
+        <h2>ชำระเงินผ่าน QR</h2>
+        <p>ยอดรวม: <strong><?= isset($receipt['total_amount']) ? number_format($receipt['total_amount'],2) : '0.00' ?> บาท</strong></p>
+        
+        <img src="assets/payment.jpeg" alt="QR Payment">
 
-    <div class="mt-4">
-        <button id="paidBtn" class="btn btn-success">
-            ชำระเงินเรียบร้อย
-        </button>
-        <a href="index.php" class="btn btn-danger">กลับสู่หน้าหลัก</a>
+        <div class="mt-4 btn-group">
+            <button id="paidBtn" class="btn btn-success btn-fixed">
+                ชำระเงินเรียบร้อย
+            </button>
+            <a href="index.php" class="btn btn-danger btn-fixed">กลับสู่หน้าหลัก</a>
+        </div>
     </div>
 </div>
 
@@ -61,10 +65,31 @@ document.getElementById('paidBtn').addEventListener('click', function(){
         confirmButtonText: 'ตกลง',
         timer: 2000
     }).then(() => {
-        // redirect ไปหน้า receipts_view.php
         window.location.href = 'receipts_view.php?id=<?= $receipt['receipt_id'] ?>';
     });
 });
 </script>
+
+<style>
+.payment-card {
+  max-width: 400px;
+  width: 100%;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  background: linear-gradient(180deg,#fff,#fbffff);
+  text-align: center;
+}
+
+.payment-card img {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 12px;
+}
+
+.btn-group { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+.btn-fixed { min-width:110px; }
+</style>
 
 <?php include "templates/footer.php"; ?>

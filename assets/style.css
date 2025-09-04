@@ -204,3 +204,25 @@ form.d-flex input[type="text"] {
   .btn-group { flex-direction: column; width: 100%; }
   .btn-fixed { width: 100%; }
 }
+/* payment_qr.php specific */
+.payment-card {
+  max-width: 400px;
+  margin: 40px auto; /* อยู่ตรงกลางแนวนอน */
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  background: linear-gradient(180deg,#fff,#fbffff);
+  text-align: center;
+}
+
+.payment-card img {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 12px;
+}
+
+/* เอาออก body flex แนวตั้งตรงกลาง */
+body.payment-page {
+  display: block; /* ปกติ */
+}
