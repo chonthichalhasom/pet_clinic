@@ -2,8 +2,26 @@
 include "app/config.php";
 include "app/helpers.php";
 checkLogin();
+
+// ตรวจสอบ flash message
+$flash = getFlash();
+
 include "templates/navbar.php";
 ?>
+
+<?php if ($flash): ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    Swal.fire({
+        title: <?= json_encode($flash['type'] === 'success' ? 'สำเร็จ!' : 'แจ้งเตือน') ?>,
+        text: <?= json_encode($flash['msg']) ?>,
+        icon: <?= json_encode($flash['type']) ?>,
+        confirmButtonText: 'ตกลง'
+    });
+});
+</script>
+<?php endif; ?>
 
 <div class="dashboard-card card" style="text-align:center; margin-top:50px; padding:40px;">
     <h1>ยินดีต้อนรับสู่ระบบคลินิกสัตว์</h1>
